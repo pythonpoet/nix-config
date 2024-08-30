@@ -7,6 +7,7 @@
     ./alpakabook.nix
 
     # desktop env
-    ../../modules/gnome
-  ]
+    #../../modules/gnome
+    ../../modules/hyperland
+  ];
 }
