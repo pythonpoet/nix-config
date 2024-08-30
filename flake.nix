@@ -13,10 +13,10 @@
       alpakabook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
           nixos-hardware.nixosModules.microsoft-surface-common
-          ./alpakabook.nix
+          ./hosts/alpakabook
         ];
+       # microsoft-surface.surface-control.enable = true;
       };
     };
   };
