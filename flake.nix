@@ -12,9 +12,10 @@
       # David's surfacebook 1
       alpakabook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        mudules = [
+        modules = [
           ./configuration.nix
           nixos-hardware.nixosModules.microsoft-surface-common
+          ./alpakabook.nix
         ];
       };
     };
