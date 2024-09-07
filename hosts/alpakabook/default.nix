@@ -4,10 +4,12 @@
   imports = [
     ./hardware-configuration.nix
     ./configuration.nix
-    ./alpakabook.nix
+        ./alpakabook.nix
 
     # desktop env
-    #../../modules/gnome
-    ../../modules/hyperland
+    ../../modules/gnome
+    #../../modules/hyperland
+    # Apps
+    ../../modules/anki
   ];
 }
