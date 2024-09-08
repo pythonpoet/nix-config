@@ -12,10 +12,6 @@ in
    gcc
    pkg-config
    libiconv
-   openssl_1_1
+   openssl
   ];
-  packageOverrides = pkgs_: with pkgs_; {
-    siege_s = siege.overrideDerivation (super: rec {
-      configureFlags = [ "--with-ssl=${openssl_wr}" ];
-    });
-  };
+}

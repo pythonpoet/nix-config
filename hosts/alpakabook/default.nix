@@ -11,5 +11,8 @@
     #../../modules/hyperland
     # Apps
     ../../modules/anki
+
+    #shell 
+    ./shell.nix
   ];
 }
