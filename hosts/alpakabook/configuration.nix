@@ -49,6 +49,7 @@
     helix
     wget
     git
+    vscodium
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
@@ -67,8 +68,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+   networking.firewall.allowedTCPPorts = [ 8765 ];
+   networking.firewall.allowedUDPPorts = [ 8765];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
