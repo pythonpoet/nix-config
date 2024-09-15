@@ -1,7 +1,7 @@
 {config, pkgs, ...}:
 
-let openssl_wr = pkgs.symlinkJoin "openssl-dev-out" (with pkgs; [ openssl.dev openssl.out ]);
-in
+#let openssl_wr = pkgs.symlinkJoin "openssl-dev-out" (with pkgs; [ openssl.dev openssl.out ]);
+#in
 {
   environment.systemPackages = with pkgs;[
    anki-bin
@@ -13,5 +13,11 @@ in
    pkg-config
    libiconv
    openssl
+ # vcpkg
+ # rust-bindgen
   ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #              "openssl-1.1.1w"
+  #            ];
+
 }

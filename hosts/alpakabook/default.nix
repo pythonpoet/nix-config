@@ -12,7 +12,6 @@
     # Apps
     ../../modules/anki
 
-    #shell 
-    ./shell.nix
+    
   ];
 }

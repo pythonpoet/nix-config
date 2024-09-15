@@ -11,6 +11,12 @@
   };
 
   outputs = inputs@ { self, nixpkgs, nixos-hardware, home-manager, ...}:
+  let
+    # Define the shell environment
+    shell = import ./hosts/alpakabook/shell.nix {
+      inherit (nixpkgs) pkgs;
+    };
+  in
   {
     # Nixos configurations
     nixosConfigurations = {
@@ -30,8 +36,13 @@
         #    home-manager.users.david = import ./home-manager/hyperland.nix;
         #  }
         ];
+         
+        #devShells.x86_64-linux.default = shell;
        # microsoft-surface.surface-control.enable = true;
       };
+    };
+    devShells = {
+      x86_64-linux.default = shell;
     };
   };
 }
