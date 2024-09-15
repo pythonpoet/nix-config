@@ -13,6 +13,8 @@
    pkg-config
    libiconv
    openssl
+   zip
+   unzip
  # vcpkg
  # rust-bindgen
   ];
