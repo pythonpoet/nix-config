@@ -3,23 +3,31 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
-{
+let
+  GERMAN = "de_DE.UTF-8";
+  ENGLISH = "en_GB";
+  DUTCH = "nl_NL.UTF-8";
+in{
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-
+  i18n.supportedLocales = [ ENGLISH DUTCH ];
+  i18n.defaultLocale = ENGLISH;
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "nl_NL.UTF-8";
-    LC_IDENTIFICATION = "nl_NL.UTF-8";
-    LC_MEASUREMENT = "nl_NL.UTF-8";
-    LC_MONETARY = "nl_NL.UTF-8";
-    LC_NAME = "nl_NL.UTF-8";
-    LC_NUMERIC = "nl_NL.UTF-8";
-    LC_PAPER = "nl_NL.UTF-8";
-    LC_TELEPHONE = "nl_NL.UTF-8";
-    LC_TIME = "nl_NL.UTF-8";
-  };
+    LANG = ENGLISH;
+    LC_MESSAGES = ENGLISH;
+    LC_IDENTIFICATION = ENGLISH;
+    LC_ALL = ENGLISH;
 
+    LC_CTYPE = DUTCH;
+    LC_NUMERIC = DUTCH;
+    LC_TIME = DUTCH;
+    LC_COLLATE = DUTCH;
+    LC_NAME = DUTCH;
+    LC_MONETARY = DUTCH;
+    LC_PAPER = DUTCH;
+    LC_ADDRESS = DUTCH;
+    LC_TELEPHONE = DUTCH;
+    LC_MEASUREMENT = DUTCH;
+  };
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
