@@ -5,29 +5,18 @@
 { config, pkgs, ... }:
 let
   GERMAN = "de_DE.UTF-8";
-  ENGLISH = "en_GB";
-  DUTCH = "nl_NL.UTF-8";
-in{
-  # Select internationalisation properties.
-  i18n.supportedLocales = [ ENGLISH DUTCH ];
+  ENGLISH = "en_US.UTF-8";
+  addUTF8 = str: "${str}/UTF-8";
+  englishLocale = addUTF8 ENGLISH;
+  GermanLocale = addUTF8 GERMAN;
+in {
+
+  i18n.supportedLocales = [ englishLocale GermanLocale ];
   i18n.defaultLocale = ENGLISH;
   i18n.extraLocaleSettings = {
-    LANG = ENGLISH;
-    LC_MESSAGES = ENGLISH;
-    LC_IDENTIFICATION = ENGLISH;
-    LC_ALL = ENGLISH;
-
-    LC_CTYPE = DUTCH;
-    LC_NUMERIC = DUTCH;
-    LC_TIME = DUTCH;
-    LC_COLLATE = DUTCH;
-    LC_NAME = DUTCH;
-    LC_MONETARY = DUTCH;
-    LC_PAPER = DUTCH;
-    LC_ADDRESS = DUTCH;
-    LC_TELEPHONE = DUTCH;
-    LC_MEASUREMENT = DUTCH;
-  };
+  LC_MESSAGES = "en_US.UTF-8";
+  LC_TIME = "de_DE.UTF-8";
+};
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 

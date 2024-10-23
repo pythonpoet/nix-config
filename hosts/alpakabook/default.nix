@@ -11,6 +11,7 @@
     #../../modules/hyperland
     # Apps
     ../../modules/anki
+    ../../modules/bonfire
 
     
   ];
