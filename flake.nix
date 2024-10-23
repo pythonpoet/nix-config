@@ -3,9 +3,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # bonfire dep.
-    bonfire.url = "github:bonfire-networks/bonfire-app/main";
-    agenix.url = "github:ryantm/agenix";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -13,15 +10,11 @@
     };
   };
 
-  outputs = inputs@ { self, nixpkgs, nixos-hardware, home-manager, bonfire,agenix, ...}:
+  outputs = inputs@ { self, nixpkgs, nixos-hardware, home-manager, ...}:
   let
     # Define the shell environment
     shell = import ./hosts/alpakabook/shell.nix {
       inherit (nixpkgs) pkgs;
-    };
-    overlay = final: prev: with final;{
-      # a package named bonfire already exists on nixpkgs so we put it under a different name
-      elixirBonfire = bonfire.packages.x86_64-linux.default;
     };
   in
   {
@@ -32,13 +25,7 @@
         system = "x86_64-linux";
         modules = [
           nixos-hardware.nixosModules.microsoft-surface-common
-          ./hosts/alpakabook
-          {
-          environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
-          nixpkgs.overlays = [ self.overlay ];
-        }
-         
-        bonfire.nixosModules.bonfire     
+        ./modules/bonfire/bonfire-docker.nix
         #  home-manager.nixosModules.home-manager
         #  {
         #    home-manager.useGlobalPkgs = true;
