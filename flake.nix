@@ -38,7 +38,7 @@
           nixpkgs.overlays = [ self.overlay ];
         }
          
-        #bonfire.nixosModules.bonfire     
+        bonfire.nixosModules.bonfire     
         #  home-manager.nixosModules.home-manager
         #  {
         #    home-manager.useGlobalPkgs = true;
